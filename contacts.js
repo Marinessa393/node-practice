@@ -25,7 +25,9 @@ function removeContact(contactId) {
   fs.readFile(contactsPath, (error, data) => {
     if (error) throw error;
     const contacts = JSON.parse(data);
-    const refreshedContacts = contacts.filter((id) => contactId !== id);
+    const refreshedContacts = contacts.filter(
+      (el) => contactId !== String(el.id)
+    );
     if (contacts.length !== refreshedContacts.length) {
       rewriteData(contactsPath, refreshedContacts);
     }
