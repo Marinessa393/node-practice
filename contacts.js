@@ -37,7 +37,7 @@ function addContact(name, email, phone) {
   fs.readFile(contactsPath, (error, data) => {
     if (error) throw error;
     const contacts = JSON.parse(data);
-    const newContact = { id: uuidv4, name, email, phone };
+    const newContact = { id: uuidv4(), name, email, phone };
     const newContactsArray = [...contacts, newContact];
     rewriteData(contactsPath, newContactsArray);
     console.table(newContactsArray);
