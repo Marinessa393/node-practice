@@ -15,9 +15,9 @@ function getContactById(contactId) {
   fs.readFile(contactsPath, (error, data) => {
     if (error) throw error;
     const contacts = JSON.parse(data);
-    const contact = contacts.find((id) => contactId === id);
+    const contact = contacts.find((el) => String(el.id) === contactId);
     if (!contact) console.log("Oops, not found :(");
-    console.table(contact);
+    console.log(contact);
   });
 }
 
